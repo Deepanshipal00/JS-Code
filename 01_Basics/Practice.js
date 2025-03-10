@@ -1,60 +1,39 @@
+//Dates
 
-const score = 400;
+let myDate = new Date();
+console.log(myDate); // 2025-03-10T18:18:25.882Z
+console.log(typeof myDate); // object
+console.log(myDate.toString()); // Mon Mar 10 2025 18:21:31 GMT+0000 (Coordinated Universal Time)
+console.log(myDate.toDateString()); // Mon Mar 10 2025
+console.log(myDate.toISOString()); // 2025-03-10T18:23:50.112Z 
+// ISO Standerd and its format is  YYYY-MM-DDTHH:mm:ss.sssZ.
+console.log(myDate.toJSON()); //2025-03-10T18:26:15.677Z
+console.log(myDate.toLocaleDateString());  // 3/10/2025 MM/DD/YYYY
+console.log(myDate.toLocaleString());  // 3/10/2025, 6:28:28 PM
+console.log(myDate.toLocaleTimeString()); // 6:29:21 PM
+console.log(myDate.toString()); // Mon Mar 10 2025 18:30:27 GMT+0000 (Coordinated Universal Time)
+console.log(myDate.toTimeString()); // 18:31:45 GMT+0000 (Coordinated Universal Time)
+console.log(myDate.toUTCString());  // Mon, 10 Mar 2025 18:31:45 GMT
 
-//We can explicitly decare the number datatype
-const balance = new Number(400);
-console.log(balance); // [Number: 400]
-console.log(typeof balance); // Object
-
-//conver the number into string through a method called toString()
-let myStringNum = balance.toString();
-console.log(myStringNum);  // 400
-console.log(typeof myStringNum); // string
-
-//now we can use string properties on this number like length etc
-
-const priceValue = new Number(25.4958);
-let fixedValue = priceValue.toFixed(2); 
-console.log(fixedValue); // 25.50 (after decimal)
-
-let preciseValue = priceValue.toPrecision(3);
-console.log(preciseValue);  // 25.5 (overall value precision)
-console.log(typeof preciseValue);  // precision returns value in string datatype
-
-const hundredValue = new Number(10000000000);
-let simplifyValue = hundredValue.toLocaleString(); //Defult US Value
-let simplifyValueInd = hundredValue.toLocaleString('en-IN')
-console.log(simplifyValue);  // 10,000,000,000
-console.log(simplifyValueInd); // 10,00,00,00,000
-console.log(typeof simplifyValue);  //string
+let myCreatedDate = new Date(2023, 0, 23, 5, 3, 22); // YYYY, MM, DD, HH, MM, SS
+console.log(myCreatedDate); // 2023-01-23T00:00:00.000Z
+console.log(myCreatedDate.toLocaleString()); // 1/23/2023, 5:03:22 AM
+let CreatedDate1 = new Date("2024-01-23"); // YYYY-MM-DD or MM-DD-YYYY
+console.log(CreatedDate1.toLocaleString());  // 1/23/2024, 12:00:00 AM
 
 
-// Maths
+let myTimestamp = Date.now();
+console.log(myTimestamp); // 1741632975310 (milliseconds)
+console.log(Math.floor(myTimestamp/1000)) //Convert it into seconds
 
-console.log(Math); //It's an object and have multiple properties : Object [Math] {}
-// Values (already defined) we can access with a dot .PI, .E, .LN2, .LN10, .LOG2E, LOG10E, .SQRT1_2, .SQRT2
+let newDate = new Date();
+console.log(newDate); // 2025-03-10T19:04:47.841Z
+console.log(newDate.getDay()); // 1 (Tuesday) {0-6} 0-Monday
+console.log(newDate.getFullYear()); // 2025
 
-console.log(Math.SQRT1_2); // 0.7071067811865476
+//We can do more customization in localstring format 
 
-//Methods
-console.log(Math.abs(-4)); // 4
-console.log(Math.round(4.5)); // 5
-console.log(Math.ceil(4.2)); //5
-console.log(Math.floor(4.8));  //4
-console.log(Math.ceil(4.0));  //4
-console.log(Math.ceil(4.00000000000000000000001));  //4
-console.log(Math.sqrt(36));  // 6
-console.log(Math.cbrt(216)); // 6
-console.log(Math.hypot(3, 4)); // 5
-console.log(Math.max(2,5, 8, 12, 22)); // 22
-console.log(Math.min(2,5, 8, 12, 22)); // 2
-console.log(Math.pow(10, 2)); // 100
-console.log(Math.trunc(12.3466)); // 12
-console.log((Math.random()*10) + 1);  // Default value will be in between 0 and 1 in a decimal form
-
-const max = 20;
-const min = 10;
-
-console.log(Math.floor(Math.random() * (max - min + 1)) + min);
-
-
+newDate.toLocaleString('default',{
+    weekday: "long",
+    dateStyle: "full"
+})
