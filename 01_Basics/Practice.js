@@ -1,55 +1,60 @@
-//String
 
-const name = "Deepanshi";
-const numRepo = 22;
+const score = 400;
 
-//concatination through string literals or String interpolation
-// Allows you to insert variables or expressions inside a string using special syntax
+//We can explicitly decare the number datatype
+const balance = new Number(400);
+console.log(balance); // [Number: 400]
+console.log(typeof balance); // Object
 
-let result = `Hey! My name is ${name} and I have ${numRepo} Repositories`;
-console.log(result);
+//conver the number into string through a method called toString()
+let myStringNum = balance.toString();
+console.log(myStringNum);  // 400
+console.log(typeof myStringNum); // string
 
-//Another way to string declaration
+//now we can use string properties on this number like length etc
 
-const gameName = new String("GTA");
-console.log(gameName);   // [String: 'GTA']
-console.log(typeof gameName);  //Object
-//It has key value pair where index represent a key and an individual unit(character) in a string represents its value
-//Here we get the length property, Object Properties and Methods
-console.log(gameName[0]); // G
+const priceValue = new Number(25.4958);
+let fixedValue = priceValue.toFixed(2); 
+console.log(fixedValue); // 25.50 (after decimal)
 
-//we can access the prototype as well
-// provides access to the internal prototype
-console.log(gameName.__proto__); // {}
+let preciseValue = priceValue.toPrecision(3);
+console.log(preciseValue);  // 25.5 (overall value precision)
+console.log(typeof preciseValue);  // precision returns value in string datatype
 
-console.log(gameName.length); // 3
-console.log(gameName.toLowerCase()); // gta
-console.log(gameName.charAt(2));  //A
-console.log(gameName.indexOf("A")); //2
+const hundredValue = new Number(10000000000);
+let simplifyValue = hundredValue.toLocaleString(); //Defult US Value
+let simplifyValueInd = hundredValue.toLocaleString('en-IN')
+console.log(simplifyValue);  // 10,000,000,000
+console.log(simplifyValueInd); // 10,00,00,00,000
+console.log(typeof simplifyValue);  //string
 
-const newString = gameName.substring(0, 2);
-console.log(newString); //GT
 
-const myName = new String("Deepanshi");
-console.log(myName.length); //9
-console.log(myName); // [String: 'Deepanshi']
-console.log(myName.__proto__);
-const newName = myName.substring(0, 5);
-console.log(newName); // Deepa
-const anotherName = myName.substring(-8, 2);
-console.log(anotherName); //De
-//In substring method it ignore the arguments and instead of negative value start form 0
-const hiname = myName.slice(-6, 6);
-console.log(hiname); //pan
+// Maths
 
-const newStringOne = "    Helloooo     "
-console.log(newStringOne);     //    Helloooo 
-console.log(newStringOne.trim( )); //Helloooo
-//trim work for white spaces and line terminals <trimstart() and trimend()>
-const url = "https://google.com/google%20link.com"
-console.log(url.replace("%20","-"));  //https://google.com/google-link.com
-console.log(url.includes("google"));  //true
+console.log(Math); //It's an object and have multiple properties : Object [Math] {}
+// Values (already defined) we can access with a dot .PI, .E, .LN2, .LN10, .LOG2E, LOG10E, .SQRT1_2, .SQRT2
 
-const link = "Deepanshi-pal-deepanshi@gmail.com";
-console.log(link.split("-")) //[ 'Deepanshi', 'pal', 'deepanshi@gmail.com' ]
-//split(saperator, limit)
+console.log(Math.SQRT1_2); // 0.7071067811865476
+
+//Methods
+console.log(Math.abs(-4)); // 4
+console.log(Math.round(4.5)); // 5
+console.log(Math.ceil(4.2)); //5
+console.log(Math.floor(4.8));  //4
+console.log(Math.ceil(4.0));  //4
+console.log(Math.ceil(4.00000000000000000000001));  //4
+console.log(Math.sqrt(36));  // 6
+console.log(Math.cbrt(216)); // 6
+console.log(Math.hypot(3, 4)); // 5
+console.log(Math.max(2,5, 8, 12, 22)); // 22
+console.log(Math.min(2,5, 8, 12, 22)); // 2
+console.log(Math.pow(10, 2)); // 100
+console.log(Math.trunc(12.3466)); // 12
+console.log((Math.random()*10) + 1);  // Default value will be in between 0 and 1 in a decimal form
+
+const max = 20;
+const min = 10;
+
+console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+
+
