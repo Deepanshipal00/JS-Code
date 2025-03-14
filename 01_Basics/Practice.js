@@ -1,39 +1,73 @@
-//Dates
+// Array
 
-let myDate = new Date();
-console.log(myDate); // 2025-03-10T18:18:25.882Z
-console.log(typeof myDate); // object
-console.log(myDate.toString()); // Mon Mar 10 2025 18:21:31 GMT+0000 (Coordinated Universal Time)
-console.log(myDate.toDateString()); // Mon Mar 10 2025
-console.log(myDate.toISOString()); // 2025-03-10T18:23:50.112Z 
-// ISO Standerd and its format is  YYYY-MM-DDTHH:mm:ss.sssZ.
-console.log(myDate.toJSON()); //2025-03-10T18:26:15.677Z
-console.log(myDate.toLocaleDateString());  // 3/10/2025 MM/DD/YYYY
-console.log(myDate.toLocaleString());  // 3/10/2025, 6:28:28 PM
-console.log(myDate.toLocaleTimeString()); // 6:29:21 PM
-console.log(myDate.toString()); // Mon Mar 10 2025 18:30:27 GMT+0000 (Coordinated Universal Time)
-console.log(myDate.toTimeString()); // 18:31:45 GMT+0000 (Coordinated Universal Time)
-console.log(myDate.toUTCString());  // Mon, 10 Mar 2025 18:31:45 GMT
+const myArray = [0, 1, 2, 3, 4, 5, "Deepanshi", true]
+// A single variable can strore different datatype elements in an array form, they are resizable
 
-let myCreatedDate = new Date(2023, 0, 23, 5, 3, 22); // YYYY, MM, DD, HH, MM, SS
-console.log(myCreatedDate); // 2023-01-23T00:00:00.000Z
-console.log(myCreatedDate.toLocaleString()); // 1/23/2023, 5:03:22 AM
-let CreatedDate1 = new Date("2024-01-23"); // YYYY-MM-DD or MM-DD-YYYY
-console.log(CreatedDate1.toLocaleString());  // 1/23/2024, 12:00:00 AM
+// To access an element form array
+
+console.log(myArray[6])  // Deepanshi
+
+// Arraay copy operations create Shallow Copies(whose properties share the same reference (Heap Memory)) -> how data is duplicated and how modifications affect the original and copied structures.
+
+//Another way to declare array
+const myBooks = new Array("Thinking Fast & Slow", "When Breath Becomes Air", "Principles By Ray Dalio");
+
+console.log(myBooks);
+/* [
+  'Thinking Fast & Slow',
+  'When Breath Becomes Air',
+  'Principles By Ray Dalio'
+] */
+console.log(myBooks[2]);  // Principles By Ray Dalio
+
+//Array Methods
+
+myBooks.push("Deep Work", "Almanak of Naval Ravikant");  // push elements to an array
+myBooks.pop(); // Remove last elements from array
+myBooks.unshift("Big Debt Crises") // Insert an element at 0 index, but it shift rest of elements from their positions.
+myBooks.shift(); // Remove first element form array
+console.log(myBooks.length);  
+console.log(myBooks);
+console.log(myBooks.includes("Deep Work")); // true
+console.log(myBooks.indexOf("Hello World")); // -1 (When element doesn't exists)
+console.log(myBooks.indexOf("Deep Work"));  //3
+
+const newArr = myBooks.join();
+console.log(newArr); // Thinking Fast & Slow,When Breath Becomes Air,Principles By Ray Dalio,Deep Work
+console.log(typeof newArr); // String
+
+// Slice and Splice
+
+const myArr = new Array(1, 2, 3, 4, 5, 6);
+console.log(myArr);  // [ 1, 2, 3, 4, 5, 6 ]
+
+const myA1 = myArr.slice(1, 3);
+console.log("A", myArr);  // A [ 1, 2, 3, 4, 5, 6 ]
+console.log(myA1); // [ 2, 3 ]
+
+// Extracts a section of an array and returns a new array containing the extracted elements.
+// The original array remains unchanged.
+
+const myA2 = myArr.splice(1,3); 
+console.log("B", myArr);   // B [ 1, 5, 6 ]
+console.log(myA2);   // [ 2, 3, 4 ]
+
+// Modifies the original array by removing or replacing existing elements and/or adding new elements. 
+
+let arr1 = [10, 20, 30, 40, 50];
+arr1.splice(1, 3);  // Removes 3 elements starting from index 1
+console.log(arr1);   // Output: [10, 50]
+
+let arr2 = [10, 50];
+arr2.splice(1, 0, 20, 30, 40);  // Inserts elements at index 1
+console.log(arr2);   // Output: [10, 20, 30, 40, 50]
+
+let arr3 = [10, 20, 30, 40, 50];
+arr3.splice(1, 2, 100, 200);  // Replaces 20 & 30 with 100 & 200
+console.log(arr3);   // Output: [10, 100, 200, 40, 50]
+
+let arr = [1, 2, 3, 4, 5];
+arr.splice(2);  // Removes everything from index 2 onward
+console.log(arr);  // Output: [1, 2]
 
 
-let myTimestamp = Date.now();
-console.log(myTimestamp); // 1741632975310 (milliseconds)
-console.log(Math.floor(myTimestamp/1000)) //Convert it into seconds
-
-let newDate = new Date();
-console.log(newDate); // 2025-03-10T19:04:47.841Z
-console.log(newDate.getDay()); // 1 (Tuesday) {0-6} 0-Monday
-console.log(newDate.getFullYear()); // 2025
-
-//We can do more customization in localstring format 
-
-newDate.toLocaleString('default',{
-    weekday: "long",
-    dateStyle: "full"
-})
