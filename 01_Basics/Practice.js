@@ -1,59 +1,62 @@
-const marvel = ["Ironman", "Thor", "Spiderman"];
-const dc = ["Superman", "Flash", "Batman"];
+// Objects
+// Two ways to declare an object -> Literal Object(Creating Individual Objects), and Constuctor Objects(To create multiple instances by similar template)
+// new object(), function object(arg1, arg2, arg3);
 
-marvel.push(dc);
-console.log(marvel); // Array insert inside marvel an element (Nested array)
-// [ 'Ironman', 'Thor', 'Spiderman', [ 'Superman', 'Flash', 'Batman' ] ]
-//Access Nested elements
+//Singleton -> A unique object
+// Object.create
 
-console.log(marvel[3][1]); //Flash
+//Object Literal
 
-const marvel_heros = ["ironman", "spiderman", "thor", "C America"];
-const dc_heros = ["superman", "flash", "batman"];
+const mySym = Symbol("Key1")  // Declare symbol
 
-//Concat function returns a new array (doesn't merge like push)
+const JsUser = {
+  name : "Deepanshi",
+  "full name" : "Deepanshi Pal",
+  // mySym : "mykey1",
+  [mySym] : "mykey1",  // Declaration syntax
+  age : 22,
+  location : "Noida",
+  email : "deepanshi@gmail.com",
+  isLoggedIn : false,
+  lastLoginDays : ["Monday", "Friday"]
+}
 
-const allHeros = marvel_heros.concat(dc_heros);
-console.log(allHeros);
-/*[
-  'ironman',
-  'spiderman',
-  'thor',
-  'C America',
-  'superman',
-  'flash',
-  'batman'
-]
+//To access values
+console.log(JsUser.email);   // deepanshi@gmail.com
+console.log(JsUser["name"]);   // Deepanshi
+//we can't access full name by ..full name
+console.log(JsUser["full name"]);  // Deepanshi Pal
+// console.log(JsUser.mySym);  // mykey1
+// console.log(typeof JsUser.mySym);  // String
+console.log(JsUser[mySym]); // mykey1
+
+// Overwrite values
+
+JsUser.email = "deepanshipal@gmail.com";
+console.log(JsUser["email"]); // deepanshipal@gmail.com
+
+// Can't make any changes to object after freezing it
+
+// Object.freeze(JsUser);
+JsUser.email = "deepanshi@gmail.com";
+console.log(JsUser.email); // deepanshipal@gmail.com
+console.log(JsUser);
+/*
+{
+  name: 'Deepanshi',
+  'full name': 'Deepanshi Pal',
+  age: 22,
+  location: 'Noida',
+  email: 'deepanshipal@gmail.com',
+  isLoggedIn: false,
+  lastLoginDays: [ 'Monday', 'Friday' ],
+  [Symbol(Key1)]: 'mykey1'  // symbol key
+}
 */
-// Alternate Method -> Spread Operator
-const allNewHeros = [...marvel_heros, ...dc_heros];
-console.log(allNewHeros);  // returns same output given above
 
-const Arr1 = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]];
-const Arr2 = Arr1.flat(Infinity);
-// we can pass a value in flat method as the depth of its complexity(Nested elements) -> 3 or Infinity
-console.log(Arr2); //[1,2,3,4,5,6,7,4,5]
+JsUser.greeting = function(){
+  console.log(`Hello ${this.name}`) //JsUser.name returns same value
+}
 
-
-// Extraction and Conversion
-
-console.log(Array.isArray("Hello")); // False
-console.log(Array.from("Hello"));   // [ 'H', 'e', 'l', 'l', 'o' ] -> Convert into Array 
-console.log(Array.from({name : "Deepanshi"})); // []
-// plain objects are not iterable by default, so Array.from({ name: "Deepanshi" }) results in an empty array.
-// need to instruct for converstion otherwise it will return empty array
-
-console.log(Object.entries({ name: "Deepanshi", age : 22, city: "Noida"}));
-// Output: [ [ 'name', 'Deepanshi' ], [ 'age', 22 ], [ 'city', 'Noida' ] ]
-
-//we can also access keys and values saperately
-
-
-let score1 = 100;
-let score2 = 200;
-let score3 = 300;
-
-console.log(Array.of(score1, score2, score3));  // [ 100, 200, 300 ]
-
-
-
+console.log(JsUser.greeting);    // [Function (anonymous)] -> Function is not executed and returning reference.
+console.log(JsUser.greeting());  // Hello Deepanshi
