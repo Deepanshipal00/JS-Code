@@ -1,62 +1,86 @@
-// Objects
-// Two ways to declare an object -> Literal Object(Creating Individual Objects), and Constuctor Objects(To create multiple instances by similar template)
-// new object(), function object(arg1, arg2, arg3);
+const UberUser = new Object();
+UberUser.id = "30icd34"
+UberUser.name = "deepanshi";
+UberUser["age"] = 22;
+UberUser.email = "deepanshi@gmail.com";
+UberUser.isLoggenIn = true;
 
-//Singleton -> A unique object
-// Object.create
+// This is a Singleton Object
 
-//Object Literal
+console.log(UberUser);
 
-const mySym = Symbol("Key1")  // Declare symbol
-
-const JsUser = {
-  name : "Deepanshi",
-  "full name" : "Deepanshi Pal",
-  // mySym : "mykey1",
-  [mySym] : "mykey1",  // Declaration syntax
-  age : 22,
-  location : "Noida",
-  email : "deepanshi@gmail.com",
-  isLoggedIn : false,
-  lastLoginDays : ["Monday", "Friday"]
+const regularUser = new Object();
+regularUser.email = "deepanshi@gmail.com";
+regularUser.fullname = {
+  username : "deepanshi",
+  firstname : "Deepanshi",
+  lastname : "Pal",
+  contact : {
+    phone : "3456678996",
+    email : {
+      first1 : "deepanshi@gmail.com",
+      second2 : "deepanshipal@gmail.com"
+    }
+  }
 }
 
-//To access values
-console.log(JsUser.email);   // deepanshi@gmail.com
-console.log(JsUser["name"]);   // Deepanshi
-//we can't access full name by ..full name
-console.log(JsUser["full name"]);  // Deepanshi Pal
-// console.log(JsUser.mySym);  // mykey1
-// console.log(typeof JsUser.mySym);  // String
-console.log(JsUser[mySym]); // mykey1
+console.log(regularUser.fullname.contact.email.second2); // deepanshipal@gmail.com
 
-// Overwrite values
+// condition ? expressionIfTrue : expressionIfFalse
 
-JsUser.email = "deepanshipal@gmail.com";
-console.log(JsUser["email"]); // deepanshipal@gmail.com
+const obj1 = {1: "a", 2: "b"};
+const obj2 = {3: "c", 4: "d"};
+const obj3 = {...obj1, ...obj2};
+const obj4 = {obj1, obj2};
+console.log(obj3);  // { '1': 'a', '2': 'b', '3': 'c', '4': 'd' }
+console.log(obj4);  // { obj1: { '1': 'a', '2': 'b' }, obj2: { '3': 'c', '4': 'd' } } //nested one
 
-// Can't make any changes to object after freezing it
 
-// Object.freeze(JsUser);
-JsUser.email = "deepanshi@gmail.com";
-console.log(JsUser.email); // deepanshipal@gmail.com
-console.log(JsUser);
-/*
-{
-  name: 'Deepanshi',
-  'full name': 'Deepanshi Pal',
-  age: 22,
-  location: 'Noida',
-  email: 'deepanshipal@gmail.com',
-  isLoggedIn: false,
-  lastLoginDays: [ 'Monday', 'Friday' ],
-  [Symbol(Key1)]: 'mykey1'  // symbol key
-}
-*/
+const obj5 = Object.assign({}, obj1, obj2);  // {} -> Target, Objects -> Source
+// Target means where values are stored and Source is which values are stored
+console.log(obj5);  // { '1': 'a', '2': 'b', '3': 'c', '4': 'd' }
 
-JsUser.greeting = function(){
-  console.log(`Hello ${this.name}`) //JsUser.name returns same value
-}
+const obj6 = Object.assign(obj1, obj2);
+obj6["1"] = "aa";
+console.log(obj6);  //{ '1': 'aa', '2': 'b', '3': 'c', '4': 'd' }
+console.log(obj1);  //{ '1': 'aa', '2': 'b', '3': 'c', '4': 'd' } 
 
-console.log(JsUser.greeting);    // [Function (anonymous)] -> Function is not executed and returning reference.
-console.log(JsUser.greeting());  // Hello Deepanshi
+// Both creates shallow copy but assign method copies prototype
+
+// Array of objects -> Data come from database
+const users = [
+  {
+    id : 1,
+    email : "deepanshi@gmail.com",
+
+  },
+  {
+    id : 2,
+    email : "deepanshi@gmail.com",
+    
+  },
+  {
+    id : 3,
+    email : "deepanshi@gmail.com",
+    
+  },
+  {
+    id : 4,
+    email : "deepanshi@gmail.com",
+    
+  }
+]
+
+console.log(users[0].id); // 1
+console.log(UberUser);
+console.log(Object.keys(UberUser)); // [ 'id', 'name', 'age', 'email', 'isLoggenIn' ]
+console.log(Object.values(UberUser)); // [ '30icd34', 'deepanshi', 22, 'deepanshi@gmail.com', true ]
+
+console.log(Object.entries(UberUser));
+//[ [ 'id', '30icd34' ], [ 'name', 'deepanshi' ], [ 'age', 22 ], [ 'email', 'deepanshi@gmail.com' ], [ 'isLoggenIn', true ] ]
+
+console.log(UberUser.hasOwnProperty('isLoggenIn')); // true
+
+
+
+
