@@ -1,67 +1,37 @@
-// Call My name Function
-
-function myName(){
-    console.log("D")
-    console.log("e")
-    console.log("e")
-    console.log("p")
-    console.log("a")
-    console.log("n")
-    console.log("s")
-    console.log("h")
-    console.log("i")
+// ... these are also known as rest operator (Depends on usecases )
+function calculateCartPrice(val1, val2, ...num){ 
+    return {val1, val2, num};
 }
 
-// myName -> Reference () -> Execute
-myName();
+// Store value in object and array and access them
 
-// Add two numbers
+console.log(calculateCartPrice(100, 400, 345, 456, 643)); 
+// { val1: 100, val2: 400, num: [ 345, 456, 643 ] }
 
-function sum(num1, num2){  // These are known as parameters
-    result = num1 + num2;
-    console.log(result);
+//Let's see how to pass object into function and execute
+
+const user = {
+    username : "Deepanshi",
+    price : 199,
 }
 
-sum(33, 23) // 56 
-
-// when they are executed or call the function, the values being pass known as arguments
-// Datatype checking is necessary
-
-// Let's Store the value of sum()
-const sumNum = sum(1,2)
-console.log("Result :", sumNum); // Result : undefined
-
-function multiply(num1, num2){
-    let result = num1 * num2;
-    return result;
-    console.log(result); // it will not executed
+function handleObject(anyobject){
+    console.log(`Username is ${anyobject.username}, Cart price is ${anyobject.price}`)
 }
 
-console.log("Result :",multiply(20, 2)); // Result : 40
-// return statement is to terminate the execution after the function will stop executing
+handleObject(user); //Username is Deepanshi, Cart price is 199
+// typechecking is neccessary in these functions to check whether the key we try to access is available in object
 
-function sub(num1, num2){
-    return num1 - num2;
+handleObject({
+    username : "Deepanshi",
+    price : 546
+})
+//Username is Deepanshi, Cart price is 546
+
+const myNewArray = [23, 45, 56, 67, 78, 89];
+
+function returnSecondValue(anyArray){
+    console.log(anyArray[1]);
 }
 
-console.log(sub(40, 20)); // 20
-
-function loginUserMessage(username = "Name"){
-    if(username === undefined){  // or !username
-        console.log("Please enter a username");
-        return // to stop execution
-    }
-    return `${username} Just logged in`;
-}
-
-console.log(loginUserMessage("Deepanshi")); //Deepanshi Just logged in
-console.log(loginUserMessage());
-// Please enter a username
-// undefined Just logged in (after return -> undefined)
-
-
-// What if we left our arguments empty during executing function -> returns undefined
-
-// we can assign default value in parameters (It will executed with this value if no value is assigned to arguments), if the value is assign to argument function will overwrite it
-
-
+returnSecondValue(myNewArray); // 45
