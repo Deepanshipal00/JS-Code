@@ -1,23 +1,67 @@
-// Destructuring of Array
+// Call My name Function
 
-const course = {
-    courseName : "Javascript",
-    price : 500,
-    courseInstructor : "Hitesh",
+function myName(){
+    console.log("D")
+    console.log("e")
+    console.log("e")
+    console.log("p")
+    console.log("a")
+    console.log("n")
+    console.log("s")
+    console.log("h")
+    console.log("i")
 }
 
-// to access course.courseInstructor or any object value repeadetly we can use
-const {courseInstructor : instructor} = course;
-// console.log(courseInstructor); // Hitesh
-console.log(instructor);
+// myName -> Reference () -> Execute
+myName();
 
-//JSON -> Javascript Object Notation -> It's not stored inside the variable, Keys and value both are in String format
-/*
-{
-    "name" : "Deepanshi",
-    "age" : 22,
-    "isLoggenIn" : true
+// Add two numbers
+
+function sum(num1, num2){  // These are known as parameters
+    result = num1 + num2;
+    console.log(result);
 }
-*/
 
-// When we fetch data from API's we get data in JSON format which we later convert in object and access the values, also data could be in Array of Object format that can loop through and neccessary data can be accessable.
+sum(33, 23) // 56 
+
+// when they are executed or call the function, the values being pass known as arguments
+// Datatype checking is necessary
+
+// Let's Store the value of sum()
+const sumNum = sum(1,2)
+console.log("Result :", sumNum); // Result : undefined
+
+function multiply(num1, num2){
+    let result = num1 * num2;
+    return result;
+    console.log(result); // it will not executed
+}
+
+console.log("Result :",multiply(20, 2)); // Result : 40
+// return statement is to terminate the execution after the function will stop executing
+
+function sub(num1, num2){
+    return num1 - num2;
+}
+
+console.log(sub(40, 20)); // 20
+
+function loginUserMessage(username = "Name"){
+    if(username === undefined){  // or !username
+        console.log("Please enter a username");
+        return // to stop execution
+    }
+    return `${username} Just logged in`;
+}
+
+console.log(loginUserMessage("Deepanshi")); //Deepanshi Just logged in
+console.log(loginUserMessage());
+// Please enter a username
+// undefined Just logged in (after return -> undefined)
+
+
+// What if we left our arguments empty during executing function -> returns undefined
+
+// we can assign default value in parameters (It will executed with this value if no value is assigned to arguments), if the value is assign to argument function will overwrite it
+
+
