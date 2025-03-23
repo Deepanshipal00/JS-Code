@@ -1,37 +1,74 @@
-// ... these are also known as rest operator (Depends on usecases )
-function calculateCartPrice(val1, val2, ...num){ 
-    return {val1, val2, num};
-}
-
-// Store value in object and array and access them
-
-console.log(calculateCartPrice(100, 400, 345, 456, 643)); 
-// { val1: 100, val2: 400, num: [ 345, 456, 643 ] }
-
-//Let's see how to pass object into function and execute
+// This & Arrow Function
 
 const user = {
-    username : "Deepanshi",
-    price : 199,
+    username: "Deepanshi",
+    price: 999,
+    welcomeMessage: function(){
+        console.log(`Hey! ${this.username}, Welcome to website`)
+        console.log(this)
+    }
+}
+user.welcomeMessage(); //Hey! Deepanshi, Welcome to website
+/*
+{
+    username: 'Deepanshi',
+    price: 999,
+    welcomeMessage: [Function: welcomeMessage]
+  }
+*/
+
+console.log(this) // In Node Environment -> {}
+// In browser ->  Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
+// In browser the engine running is window(Global Object)
+// this to refer current context
+
+function chai(){
+    let username = "Deepanshi"
+    // console.log(this);
+    console.log(this.username); // undefined
 }
 
-function handleObject(anyobject){
-    console.log(`Username is ${anyobject.username}, Cart price is ${anyobject.price}`)
+chai();
+// we cannot use this for function, similarly not for expression
+// Output -> console.log(this) : chai()
+/*
+<ref *1> Object [global] {
+  global: [Circular *1],
+  clearImmediate: [Function: clearImmediate],
+  setImmediate: [Function: setImmediate] {
+    [Symbol(nodejs.util.promisify.custom)]: [Getter]
+  },
+  clearInterval: [Function: clearInterval],
+  clearTimeout: [Function: clearTimeout],
+  setInterval: [Function: setInterval],
+  setTimeout: [Function: setTimeout] {
+    [Symbol(nodejs.util.promisify.custom)]: [Getter]
+  },
+  queueMicrotask: [Function: queueMicrotask],
+  structuredClone: [Getter/Setter],
+  atob: [Getter/Setter],
+  btoa: [Getter/Setter],
+  performance: [Getter/Setter],
+  fetch: [Function: fetch],
+  navigator: [Getter],
+  crypto: [Getter]
+}
+*/
+
+const code = () => {
+    const username = "Deepanshi";
+    console.log(this.username); // undefined
+    console.log(this); // {}
 }
 
-handleObject(user); //Username is Deepanshi, Cart price is 199
-// typechecking is neccessary in these functions to check whether the key we try to access is available in object
+code();
 
-handleObject({
-    username : "Deepanshi",
-    price : 546
-})
-//Username is Deepanshi, Cart price is 546
+// const add2 = (num, num2 = 2) => {return num + num2} // Explicit return
+// const add2 = (num, num2 = 2) => num + num2;  // implicit return
+const add2 = (num, num2 = 2) => (num + num2);  // implicit return
+console.log(add2(2))  // 4
 
-const myNewArray = [23, 45, 56, 67, 78, 89];
+const add = (num1, num2) => ({username : "Deepanshi"}) // returning object
+console.log(add(3,4)); // {username: 'Deepanshi'}
 
-function returnSecondValue(anyArray){
-    console.log(anyArray[1]);
-}
-
-returnSecondValue(myNewArray); // 45
+// const myArray = [2, 4, 6, 8, 10];
