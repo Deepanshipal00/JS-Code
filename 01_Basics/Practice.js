@@ -1,174 +1,73 @@
-// Control Flow or Logic Flow
+//Loops - Iteration
 
-// if
-// if(condition)-> If this condition is true code execute, if the condition is false code will not exceute {inside this scope}
+// for 
 
-//Example
-const isUserLoggedIn = true;
-
-if(isUserLoggedIn){
-  console.log('Welcome Back!') // Welcome Back!
-}
-
-const temperature = 41;
-if (temperature < 50){
-  console.log('Temperature is less than 50');  // Temperature is less than 50
-}else{
-console.log('Temperature is greater than 50'); // Not executed
-}
-
-if(temperature === 50){
-  console.log("Temperature is Hotter") // Condition is not true -> Not Executed
-}else{
-  console.log("Temperature is Rising") // This will execute -> Temperature is Rising
-}
-
-const score = 200;
-if(score >= 100){
-  const power = "Fly";
-  console.log(`Power : ${power}`); // Power : Fly
-}
-
-// Implicit Scope
-const balance = 1000;
-if(balance > 50) console.log("Test"); // Test
-
-// Nested Loops
-if(balance < 500){
-  console.log("Balance is less than 500");
-}else if(balance < 750){
-  console.log("Balance is less than 750");
-}else if(balance < 900){
-  console.log("Balance is less than 900");
-}else{
-  console.log("Balance is less than 1000 but greater than 900") // This will execute, above condition are not true
-}
-
-// Logical Operator AND &&, OR ||
-
-const userLogIn = true;
-const debitCard = true;
-const logInFromGoogle = false;
-const logInFromEmail = true;
-
-if (userLogIn && debitCard){
-  console.log("Allow to buy course"); // Allow to buy course
-}
-
-if(logInFromEmail || logInFromGoogle){
-  console.log("User Logged In");  // User Logged In
+for(let i = 1; i <= 10; i++){
+  console.log(i);
+  if (i == 5){
+    console.log("Give me HI 5")
+  }
 }
 
 
-// && -> Both the condition must be true to execute the code
-// || -> One of the condition should be true to execute the code
-//comparision operator
-// <(less than), >(Greater than), <=(less than equals), >=(Greater than equals), =(assignment operator), ==(equals), !=(not equals), ===(type and value equals or strict equality operator), !== (not equal value or not equal type)
+// var decleartion, condition check(true -> Execute, false -> break), Update the counter variable after each iteration 
+// Initialization, condition, increment/decrement
 
-//Switch
+for(let i = 1; i <= 10; i++){
+  console.log(`Outer Loop Value ${i}`)
+  for(let j = 1; j <= 10; j++){
+    // console.log(`Inner Loop Value ${j} and inner loop ${i} `);
+    console.log(i + "*" + j + "=" + i*j); // Print table
+  }
+}
 
+let myArray = ["Flash", "Batman", "Superman"]
+
+for (let index = 0; index < myArray.length; index++) {
+  const element = myArray[index];
+  console.log(element);
+}
+
+
+// Keywords
+// break and continue
+
+for(let i = 1; i <= 20; i++){
+  if(i == 5){
+    console.log('Detected 5')
+    break;
+  }
+  console.log(`Value of i is ${i}`);
+}
+// After break it gets out of the iteration and stop executing
 /*
-***** Syntax *****
-switch(key) {
-      case value:
-        break;
-
-      default:
-        break;
-}
+Value of i is 1
+Value of i is 2
+Value of i is 3
+Value of i is 4
+Detected 5
 */
 
-// Shift + Alt + down arrow to duplicate
-const month = 3;
-
-switch(month){
-  case 1:
-    console.log("January");
-    break;
-  case 2:
-    console.log("February");
-    break;
-  case 3:
-    console.log("March");
-    break;
-  case 4:
-    console.log("April");
-    break;
-  case 5:
-    console.log("May");
-    break;
-  case 6:
-    console.log("June");
-    break;
-  case 7:
-    console.log("July");
-    break;
-  case 8:
-    console.log("August");
-    break;
-  case 9:
-    console.log("September");
-    break;
-  case 10:
-    console.log("October");
-    break;
-  case 11:
-    console.log("November");
-    break;
-  case 12:
-    console.log("December");
-    break;
-  default:
-    console.log("Please enter Month number")
-    break;
+for(let i = 1; i <= 10; i++){
+  if(i == 5){
+    console.log('Detected 5')
+    continue;
+  }
+  console.log(`Value of i is ${i}`);
 }
-//March
-// if break is not given/commented in 3rd condition where which is true, after that everything is executes except default condition
+// Execution is Skip for once and continue
+/* 
+Value of i is 1
+Value of i is 2
+Value of i is 3
+Value of i is 4
+Detected 5
+Value of i is 6
+Value of i is 7
+Value of i is 8
+Value of i is 9
+Value of i is 10
+*/
 
-// Truthy or Falsy Value
-const userEmail = "deepanshi@gmail.com";
 
-if (userEmail){
-  console.log(`Got user Email`); // User Logged In
-} else{
-  console.log(`Don't have user Email`)
-}
-// "String have Something" -> True
-// ""-> Empty string is false
-// [] -> Empty array is true
 
-//Falsy Values -> false, 0, -0, BigInt 0n, "", null, undefined, NaN
-//Truthy Values -> Except falsy value such as "0", "false", " ", [], {}, function(){}
-
-const checkArray = [];
-if (checkArray.length === 0){
-  console.log("Array is Empty"); // Array is Empty
-}
-
-const emptyObj = {};
-if(Object.values(emptyObj).length === 0){
-  console.log("Object is Empty"); // Object is Empty
-}
-
-// false == 0 -> True
-// false == '' -> True
-// 0 == '' -> True
-
-// Nullish Coalescing Operator (??): null undefined
-
-let val1;
-// val1 = 5 ?? 10 // 5
-// val1 = null ?? 10 // 10
-// val1 = undefined ?? 15  // 15
-val1 = null ?? 10 ?? 15 // 10
-
-// To prevent fallback from errors in code execution
-console.log(val1);
-
-//Ternary Operator
-
-// condition ? true : false
-
-const iceTeaPrice = 100;
-
-iceTeaPrice >= 80 ? console.log("greater than 80") : console.log("Less than 80")
