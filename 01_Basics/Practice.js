@@ -1,73 +1,50 @@
-//Loops - Iteration
+// While Loops
 
-// for 
-
-for(let i = 1; i <= 10; i++){
-  console.log(i);
-  if (i == 5){
-    console.log("Give me HI 5")
-  }
+// condition
+let index = 0;
+while(index <= 10){
+  console.log(`Value of index is ${index}`);
+  index = index + 2;
 }
 
+let myArray = ["Flash", "Batman", "Superman"];
 
-// var decleartion, condition check(true -> Execute, false -> break), Update the counter variable after each iteration 
-// Initialization, condition, increment/decrement
-
-for(let i = 1; i <= 10; i++){
-  console.log(`Outer Loop Value ${i}`)
-  for(let j = 1; j <= 10; j++){
-    // console.log(`Inner Loop Value ${j} and inner loop ${i} `);
-    console.log(i + "*" + j + "=" + i*j); // Print table
-  }
+let arr = 0;
+while(arr < myArray.length){
+  console.log(`Value is ${myArray[arr]}`);
+  arr += 1
 }
 
-let myArray = ["Flash", "Batman", "Superman"]
+//Value is Flash
+//Value is Batman
+//Value is Superman
 
-for (let index = 0; index < myArray.length; index++) {
-  const element = myArray[index];
-  console.log(element);
-}
+// Do while Loop
+
+// First execution then check condition
+
+let score = 11;
+do{
+  console.log(`Score is ${score}`)
+  score++;
+}while(score <= 10)
+// Score is 11
 
 
-// Keywords
-// break and continue
-
-for(let i = 1; i <= 20; i++){
-  if(i == 5){
-    console.log('Detected 5')
-    break;
-  }
-  console.log(`Value of i is ${i}`);
-}
-// After break it gets out of the iteration and stop executing
+// let score = 1;
+// do{
+//   console.log(`Score is ${score}`)
+//   score++;
+// }while(score <= 10)
 /*
-Value of i is 1
-Value of i is 2
-Value of i is 3
-Value of i is 4
-Detected 5
+Score is 1
+Score is 2
+Score is 3
+Score is 4
+Score is 5
+Score is 6
+Score is 7
+Score is 8
+Score is 9
+Score is 10
 */
-
-for(let i = 1; i <= 10; i++){
-  if(i == 5){
-    console.log('Detected 5')
-    continue;
-  }
-  console.log(`Value of i is ${i}`);
-}
-// Execution is Skip for once and continue
-/* 
-Value of i is 1
-Value of i is 2
-Value of i is 3
-Value of i is 4
-Detected 5
-Value of i is 6
-Value of i is 7
-Value of i is 8
-Value of i is 9
-Value of i is 10
-*/
-
-
-
