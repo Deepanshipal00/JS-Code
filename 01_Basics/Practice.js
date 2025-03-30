@@ -1,50 +1,109 @@
-// While Loops
-
-// condition
-let index = 0;
-while(index <= 10){
-  console.log(`Value of index is ${index}`);
-  index = index + 2;
+const myObject = {
+  'game1' : 'NFS',
+  'game2' : 'Spiderman'
 }
 
-let myArray = ["Flash", "Batman", "Superman"];
+// for(const [key, value] of myObject){
+//   console.log(key, ":-", value);
+// } // Objects are not iteratable that way
 
-let arr = 0;
-while(arr < myArray.length){
-  console.log(`Value is ${myArray[arr]}`);
-  arr += 1
+// for...of works with iterables: It works with iterable objects like arrays, Map, Set, etc., to iterate over values. However, plain objects are not iterable directly, so for...of doesn't work with them. To iterate over an object's properties, you would need to use Object.keys(), Object.values(), or Object.entries().
+
+const lang = {
+  js : 'Javascript',
+  cpp : 'C++',
+  rb : 'Ruby',
+  swift : 'Swift by apple'
 }
 
-//Value is Flash
-//Value is Batman
-//Value is Superman
+// for in loop
+// It iterates over the enumerable properties (keys) of an object.
 
-// Do while Loop
+for(const key in lang){
+  console.log(key);
+  console.log(lang[key]);
+}
 
-// First execution then check condition
+// js, cpp, rb, swift
+// javascript, C++, Ruby, Swift by apple
 
-let score = 11;
-do{
-  console.log(`Score is ${score}`)
-  score++;
-}while(score <= 10)
-// Score is 11
+let testArr = [12, 13, 14, 15, 16];
+
+for (const num in testArr){
+  console.log(num); // 0, 1, 2, 3, 4
+  console.log(testArr[num]); // 12, 13, 14, 15, 16
+}
+
+// Let's Check if it's work on map object
+// map is not iteratable because it's designed for key-value storage, not ordered collections, and lacks the [Symbol.iterator] method required for iteration. 
+const map = new Map()
+map.set('IN', 'India');
+map.set('USA', 'United States of America');
+map.set('Fr', 'France');
+
+for(const val in map){
+  console.log(val, ":-", map[val]);
+} // It will not work
+
+// For each Loop
+
+const coding = ['Js', 'Ruby', 'Java', 'Python', 'Cpp'];
 
 
-// let score = 1;
-// do{
-//   console.log(`Score is ${score}`)
-//   score++;
-// }while(score <= 10)
+// call back function
+// item is the array value that are passing to parameter
+coding.forEach( function (item){
+  console.log(item);
+})
+// Output : - All items(values) inside coding
+
+coding.forEach( (item) => {
+  console.log(item);
+})
+// Output : - All items(values) inside coding
+
+function printMe(item){
+  console.log(item);
+}
+// Pass on this function to call back
+coding.forEach(printMe);
+
+// parameter -> item(values), index(keys), arr(list)
+coding.forEach( (values, index, arr) =>{
+  console.log(index, ":-", values, arr);
+});
+
 /*
-Score is 1
-Score is 2
-Score is 3
-Score is 4
-Score is 5
-Score is 6
-Score is 7
-Score is 8
-Score is 9
-Score is 10
+0 :- Js [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
+1 :- Ruby [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
+2 :- Java [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
+3 :- Python [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
+4 :- Cpp [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
 */
+
+ const myCoding = [
+  {
+    languageName : "javascript",
+    languageFilename : "js",
+  },
+  {
+    languageName : "Ruby",
+    languageFilename : "rb",
+  },
+  {
+    languageName : "Python",
+    languageFilename : "py",
+  },
+  {
+    languageName : "Java",
+    languageFilename : "java",
+  }
+ ]
+
+ myCoding.forEach( (item) => {
+  console.log(item.languageName);
+ } );
+ // javascript, Ruby, Python, Java
+ 
+
+
