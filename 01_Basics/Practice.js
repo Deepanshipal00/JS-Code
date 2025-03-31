@@ -1,109 +1,122 @@
-const myObject = {
-  'game1' : 'NFS',
-  'game2' : 'Spiderman'
-}
+const coding = ["js", "ruby", "java", "python", "cpp"];
 
-// for(const [key, value] of myObject){
-//   console.log(key, ":-", value);
-// } // Objects are not iteratable that way
-
-// for...of works with iterables: It works with iterable objects like arrays, Map, Set, etc., to iterate over values. However, plain objects are not iterable directly, so for...of doesn't work with them. To iterate over an object's properties, you would need to use Object.keys(), Object.values(), or Object.entries().
-
-const lang = {
-  js : 'Javascript',
-  cpp : 'C++',
-  rb : 'Ruby',
-  swift : 'Swift by apple'
-}
-
-// for in loop
-// It iterates over the enumerable properties (keys) of an object.
-
-for(const key in lang){
-  console.log(key);
-  console.log(lang[key]);
-}
-
-// js, cpp, rb, swift
-// javascript, C++, Ruby, Swift by apple
-
-let testArr = [12, 13, 14, 15, 16];
-
-for (const num in testArr){
-  console.log(num); // 0, 1, 2, 3, 4
-  console.log(testArr[num]); // 12, 13, 14, 15, 16
-}
-
-// Let's Check if it's work on map object
-// map is not iteratable because it's designed for key-value storage, not ordered collections, and lacks the [Symbol.iterator] method required for iteration. 
-const map = new Map()
-map.set('IN', 'India');
-map.set('USA', 'United States of America');
-map.set('Fr', 'France');
-
-for(const val in map){
-  console.log(val, ":-", map[val]);
-} // It will not work
-
-// For each Loop
-
-const coding = ['Js', 'Ruby', 'Java', 'Python', 'Cpp'];
-
-
-// call back function
-// item is the array value that are passing to parameter
-coding.forEach( function (item){
-  console.log(item);
+const values = coding.forEach( (val) => {
+  console.log(val);
 })
-// Output : - All items(values) inside coding
 
-coding.forEach( (item) => {
-  console.log(item);
+console.log(values);  //undefined
+
+// forEach doesn't retrun any value
+
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+//filter
+// filter returns value
+
+const newNums = myNums.filter( (num) => {
+  return num > 4
 })
-// Output : - All items(values) inside coding
 
-function printMe(item){
-  console.log(item);
-}
-// Pass on this function to call back
-coding.forEach(printMe);
+console.log(newNums); // [ 5, 6, 7, 8, 9, 10 ]
 
-// parameter -> item(values), index(keys), arr(list)
-coding.forEach( (values, index, arr) =>{
-  console.log(index, ":-", values, arr);
+// Same thing can be done by forEach
+const newNums1 = [];
+
+myNums.forEach((val) => {
+  if(val > 4){
+    newNums1.push(val)
+  }
 });
 
+console.log(newNums1); //[ 5, 6, 7, 8, 9, 10 ]
+
+const books = [
+  { title: 'Book One', genre: 'Fiction', publish: 1981, edition: 2004 },
+  { title: 'Book Two', genre: 'Non-Fiction', publish: 1992, edition: 2008 },
+  { title: 'Book Three', genre: 'History', publish: 1999, edition: 2007 },
+  { title: 'Book Four', genre: 'Non-Fiction', publish: 1989, edition: 2010 },
+  { title: 'Book Five', genre: 'Science', publish: 2009, edition: 2014 },
+  { title: 'Book Six', genre: 'Fiction', publish: 1987, edition: 2010 },
+  { title: 'Book Seven', genre: 'History', publish: 1986, edition: 1996 },
+  { title: 'Book Eight', genre: 'Science', publish: 2011, edition: 2016 },
+  { title: 'Book Nine', genre: 'Non-Fiction', publish: 1981, edition: 1989 },
+];
+
+const userBooks = books.filter((book) =>{
+  return book.genre === "History";
+})
+
+console.log(userBooks);
+
+for(const bookTitle of userBooks){
+  console.log(bookTitle.title)
+}
+//Book Three, Book Seven
+
+const book2000 = books.filter( (book) => {
+  return book.publish >= 2000;
+})
+
+console.log(book2000);
+
+const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const multiply = myNumbers.map( (num) => num*2);
+
+console.log(multiply); // [2,  4,  6,  8, 10, 12, 14, 16, 18, 20 ]
+
+//Chaining => 
+const heyNums = myNumbers
+.map((num) => num * 10)
+.map((num) => num + 1)
+.filter((num) => num >= 40 );
+
+console.log(heyNums);
+// [11, 21, 31, 41,  51, 61, 71, 81, 91, 101]
+// [41, 51,  61, 71, 81, 91, 101]
+
+// Reduce
+
+const nums = [1, 2, 3];
+
+const myTotal = nums.reduce((acc, currval) => {
+  console.log(`acc : ${acc} and currval : ${currval}`);
+  return acc + currval
+}, 0);
+
 /*
-0 :- Js [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
-1 :- Ruby [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
-2 :- Java [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
-3 :- Python [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
-4 :- Cpp [ 'Js', 'Ruby', 'Java', 'Python', 'Cpp' ]
+acc : 0 and currval : 1
+acc : 1 and currval : 2
+acc : 3 and currval : 3
 */
 
- const myCoding = [
+console.log(myTotal); // 6
+
+
+const shoppingCart = [
   {
-    languageName : "javascript",
-    languageFilename : "js",
+    itemName: "JS Course",
+    price: 2999
   },
   {
-    languageName : "Ruby",
-    languageFilename : "rb",
+    itemName: "Java Course",
+    price: 9999
   },
   {
-    languageName : "Python",
-    languageFilename : "py",
+    itemName: "Python Course",
+    price: 999
   },
   {
-    languageName : "Java",
-    languageFilename : "java",
+    itemName: "Data Science Course",
+    price: 12999
+  },
+  {
+    itemName: "Mobile Dev Course",
+    price: 6999
   }
- ]
+]
 
- myCoding.forEach( (item) => {
-  console.log(item.languageName);
- } );
- // javascript, Ruby, Python, Java
- 
+const totalPrice = shoppingCart.reduce((acc, item) => acc 
+ + item.price, 0)
 
-
+console.log(totalPrice);
